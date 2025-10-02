@@ -11,14 +11,14 @@
 
 **❗ Important notes for wardens** 
 1. A coded, runnable PoC is required for all High/Medium submissions to this audit. 
-  - This repo includes a basic template to run the test suite.
-  - PoCs must use the test suite provided in this repo.
-  - Your submission will be marked as Insufficient if the POC is not runnable and working with the provided test suite.
-  - Exception: PoC is optional (though recommended) for wardens with signal ≥ 0.68.
+    - This repo includes a basic template to run the test suite.
+    - PoCs must use the test suite provided in this repo.
+    - Your submission will be marked as Insufficient if the POC is not runnable and working with the provided test suite.
+    - Exception: PoC is optional (though recommended) for wardens with signal ≥ 0.68.
 1. Judging phase risk adjustments (upgrades/downgrades):
-  - High- or Medium-risk submissions downgraded by the judge to Low-risk (QA) will be ineligible for awards.
-  - Upgrading a Low-risk finding from a QA report to a Medium- or High-risk finding is not supported.
-  - As such, wardens are encouraged to select the appropriate risk level carefully during the submission phase.
+    - High- or Medium-risk submissions downgraded by the judge to Low-risk (QA) will be ineligible for awards.
+    - Upgrading a Low-risk finding from a QA report to a Medium- or High-risk finding is not supported.
+    - As such, wardens are encouraged to select the appropriate risk level carefully during the submission phase.
 
 ## Automated Findings / Publicly Known Issues
 
@@ -28,11 +28,11 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 The issues identified in [Peckshield's September 2025 audit report](https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hybra-ve33-v1.0.pdf) are considered publicly known issues and are therefore ineligible for awards, including:
 
-1.Possible ERC7702 Incompatibility in Contract Check
-2.Voting Delegate Denial-of-Service With Dust Delegates
-3.Trust Issue of Admin Keys
-4.Improved Dynamic Fee Calculation in `DynamicSwapFeeModule`
-5.Improper `estimateAmount0/1()` logic in `SugarHelper`
+1. Possible ERC7702 Incompatibility in Contract Check
+2. Voting Delegate Denial-of-Service With Dust Delegates
+3. Trust Issue of Admin Keys
+4. Improved Dynamic Fee Calculation in `DynamicSwapFeeModule`
+5. Improper `estimateAmount0/1()` logic in `SugarHelper`
 
 # Overview
 
