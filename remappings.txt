@@ -1,0 +1,6 @@
+@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/
+@openzeppelin/contracts-upgradeable/=node_modules/@openzeppelin/contracts-upgradeable/
+@cryptoalgebra/integral-core/=node_modules/@cryptoalgebra/integral-core/
+@cryptoalgebra/integral-periphery/=node_modules/@cryptoalgebra/integral-periphery/
+@cryptoalgebra/integral-base-plugin/=node_modules/@cryptoalgebra/integral-base-plugin/
+@cryptoalgebra/integral-farming/=node_modules/@cryptoalgebra/integral-farming/

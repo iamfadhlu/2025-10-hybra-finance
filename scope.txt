@@ -1,0 +1,14 @@
+./contracts/GaugeManager.sol
+./contracts/GaugeV2.sol
+./contracts/MinterUpgradeable.sol
+./contracts/VoterV3.sol
+./contracts/VotingEscrow.sol
+./contracts/CLGauge/GaugeCL.sol
+./contracts/CLGauge/GaugeFactoryCL.sol
+./contracts/GovernanceHYBR.sol
+./contracts/HYBR.sol
+./contracts/RewardHYBR.sol
+./contracts/CL/core/CLFactory.sol
+./contracts/CL/core/CLPool.sol
+./contracts/CL/core/fees/DynamicSwapFeeModule.sol
+./contracts/swapper/HybrSwapper.sol
