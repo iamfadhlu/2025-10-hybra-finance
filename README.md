@@ -77,22 +77,22 @@ The scope of the project involves a subset of the full contract list in this rep
 
 ### Files in scope
 
-| Contract                                                                                                                                                    |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [ve33/contracts/GaugeManager.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/GaugeManager.sol)                                 |
-| [ve33/contracts/GaugeV2.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/GaugeV2.sol)                                           |
-| [ve33/contracts/MinterUpgradeable.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/MinterUpgradeable.sol)                       |
-| [ve33/contracts/VoterV3.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/VoterV3.sol)                                           |
-| [ve33/contracts/VotingEscrow.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/VotingEscrow.sol)                                 |
-| [ve33/contracts/GovernanceHYBR.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/GovernanceHYBR.sol)                             |
-| [ve33/contracts/HYBR.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/HYBR.sol)                                                 |
-| [ve33/contracts/RewardHYBR.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/RewardHYBR.sol)                                     |
-| [ve33/contracts/swapper/HybrSwapper.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/swapper/HybrSwapper.sol)                   |
-| [ve33/contracts/CLGauge/GaugeCL.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/CLGauge/GaugeCL.sol)                           |
-| [ve33/contracts/CLGauge/GaugeFactoryCL.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/ve33/contracts/CLGauge/GaugeFactoryCL.sol)             |
-| [cl/contracts/core/CLFactory.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/cl/contracts/core/CLFactory.sol)                                 |
-| [cl/contracts/core/CLPool.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/cl/contracts/core/CLPool.sol)                                       |
-| [cl/contracts/core/fees/DynamicSwapFeeModule.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/cl/contracts/core/fees/DynamicSwapFeeModule.sol) |
+| Contract                                                                                                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ve33/contracts/GaugeManager.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/GaugeManager.sol)                                 |
+| [ve33/contracts/GaugeV2.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/GaugeV2.sol)                                           |
+| [ve33/contracts/MinterUpgradeable.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/MinterUpgradeable.sol)                       |
+| [ve33/contracts/VoterV3.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/VoterV3.sol)                                           |
+| [ve33/contracts/VotingEscrow.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/VotingEscrow.sol)                                 |
+| [ve33/contracts/GovernanceHYBR.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/GovernanceHYBR.sol)                             |
+| [ve33/contracts/HYBR.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/HYBR.sol)                                                 |
+| [ve33/contracts/RewardHYBR.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/RewardHYBR.sol)                                     |
+| [ve33/contracts/swapper/HybrSwapper.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/swapper/HybrSwapper.sol)                   |
+| [ve33/contracts/CLGauge/GaugeCL.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/CLGauge/GaugeCL.sol)                           |
+| [ve33/contracts/CLGauge/GaugeFactoryCL.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/ve33/contracts/CLGauge/GaugeFactoryCL.sol)             |
+| [cl/contracts/core/CLFactory.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/cl/contracts/core/CLFactory.sol)                                 |
+| [cl/contracts/core/CLPool.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/cl/contracts/core/CLPool.sol)                                       |
+| [cl/contracts/core/fees/DynamicSwapFeeModule.sol](https://github.com/code-423n4/2025-10-hybra-finance/blob/main/cl/contracts/core/fees/DynamicSwapFeeModule.sol) |
 
 _For a machine-readable version, kindly consult the `scope.txt` file in the repository_
 
