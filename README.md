@@ -7,8 +7,8 @@
   - Judge awards: $2,500 in USDC
   - Scout awards: $500 in USDC
 - [Read our guidelines for more details](https://docs.code4rena.com/competitions)
-- Starts October 3, 2025 20:00 UTC
-- Ends October 13, 2025 20:00 UTC
+- Starts October 6, 2025 20:00 UTC
+- Ends October 16, 2025 20:00 UTC
 
 **❗ Important notes for wardens**
 
@@ -17,7 +17,7 @@
    - PoCs must use the test suite provided in this repo.
    - Your submission will be marked as Insufficient if the POC is not runnable and working with the provided test suite.
    - Exception: PoC is optional (though recommended) for wardens with signal ≥ 0.68.
-1. Judging phase risk adjustments (upgrades/downgrades):
+2. Judging phase risk adjustments (upgrades/downgrades):
    - High- or Medium-risk submissions downgraded by the judge to Low-risk (QA) will be ineligible for awards.
    - Upgrading a Low-risk finding from a QA report to a Medium- or High-risk finding is not supported.
    - As such, wardens are encouraged to select the appropriate risk level carefully during the submission phase.
