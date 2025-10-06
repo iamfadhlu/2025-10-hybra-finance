@@ -21,6 +21,7 @@
    - High- or Medium-risk submissions downgraded by the judge to Low-risk (QA) will be ineligible for awards.
    - Upgrading a Low-risk finding from a QA report to a Medium- or High-risk finding is not supported.
    - As such, wardens are encouraged to select the appropriate risk level carefully during the submission phase.
+3. This audit includes **deployed code,** and [the "live criticals" exception](https://docs.code4rena.com/awarding#the-live-criticals-exception) therefore applies. 
 
 ## Automated Findings / Publicly Known Issues
 
