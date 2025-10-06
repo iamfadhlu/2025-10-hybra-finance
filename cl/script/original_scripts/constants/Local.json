@@ -1,0 +1,23 @@
+{
+  "team": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "WETH": "0x5555555555555555555555555555555555555555",
+  "poolFactoryOwner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "feeManager": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "notifyAdmin": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "nftName": "Concentrated Liquidity Positions NFT",
+  "nftSymbol": "CL-POS",
+  
+  "testTokens": {
+    "USDC": "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d",
+    "USDT": "0x2bdCC0de6bE1f7D2ee689a0342D76F52E8EFABa3",
+    "DAI": "0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1",
+    "WETH": "0x5555555555555555555555555555555555555555"
+  },
+  
+  "singlePool": {
+    "tokenA": "0xA8452Ec99ce0C64f20701dB7dD3abDb607c00496",
+    "tokenB": "0xBb2180ebd78ce97360503434eD37fcf4a1Df61c3",
+    "tickSpacing": 200,
+    "sqrtPriceX96": "79228162514264337593543950336"
+  }
+}

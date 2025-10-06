@@ -1,0 +1,33 @@
+[profile.default]
+src = "contracts"
+test = "test"
+out = "out"
+libs = ["lib"]
+solc_version = "0.7.6"
+
+optimizer = true
+optimizer_runs = 10  # Reduced to match Hardhat config and reduce contract size
+bytecode_hash = "none"
+cbor_metadata = false
+
+fs_permissions = [{ access = "read-write", path = "./"}]
+
+no_match_test = "testEchidna"
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config
+
+[fuzz]
+runs = 5000
+
+[rpc_endpoints]
+base_goerli = "${BASE_GOERLI_RPC_URL}"
+base = "${BASE_RPC_URL}"
+hyper = "${HYPEREVM_RPC_URL}"
+hyper_test="${HYPER_TEST}"
+local="http://localhost:8545"
+
+[etherscan]
+base_goerli = { key = "${BASE_GOERLI_ETHERSCAN_API_KEY}", url = "${BASE_GOERLI_ETHERSCAN_VERIFIER_URL}" }
+base = { key = "${BASE_ETHERSCAN_API_KEY}", url = "${BASE_ETHERSCAN_VERIFIER_URL}" }
+hyper = { key = "${HYPEREVM_ETHERSCAN_API_KEY}", url = "${HYPEREVM_ETHERSCAN_VERIFIER_URL}" }
+hyper_test = { key = "${HYPEREVM_ETHERSCAN_API_KEY}", url = "${HYPEREVM_ETHERSCAN_VERIFIER_URL}" }

@@ -1,0 +1,35 @@
+{
+  "team": "0x8d1A65a2B04f704Ab934E1aBA8B2B202E22197Ad",
+  "treasury": "0x8d1A65a2B04f704Ab934E1aBA8B2B202E22197Ad",
+  "weth": "0x5555555555555555555555555555555555555555",
+  "clFactory": "0x7b4fEbFF21d298ee7a3bcF4a2d8836764ACf7dcf",
+  "nonfungiblePositionManager": "0x765b7C856216B31F74d9Ad28fc69c7e60687FcA9",
+  "pairGenerator": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+  "v2Factory": "0x4453bC3FdF5F4d95d414655bc1f38A2f2353275c",
+  "tokensToWhitelist": [
+    {
+      "name": "WETH",
+      "tokenAddress": "0x5555555555555555555555555555555555555555"
+    },
+    {
+      "name": "DAI", 
+      "tokenAddress": "0x7969c5eD335650692Bc04293B07F5BF2e7A673C0"
+    },
+    {
+      "name": "TokenA",
+      "tokenAddress": "0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44"
+    },
+    {
+      "name": "TokenB",
+      "tokenAddress": "0xa85233C63b9Ee964Add6F2cffe00Fd84eb32338f"
+    },
+    {
+      "name": "USDC",
+      "tokenAddress": "0x6C63c32D46e3e1D62Bdc98d5d07D0d093ea39BBF"
+    },
+    {
+      "name": "USDT",
+      "tokenAddress": "0x8D0825829A5B33fAf44e885a196B5a3cc590B4d1"
+    }
+  ]
+}

@@ -13,4 +13,6 @@ docs/
 # Dotenv file
 .env
 node_modules
-lib
+
+# Custom output files
+cl/script/constants/output
