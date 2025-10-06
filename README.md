@@ -269,7 +269,7 @@ Additional Trusted Addresses
 
 ## Running tests
 
-### Preqreuisites
+### Prerequisites
 
 The codebase relies on the `foundry` toolkit and contains dependencies that must be installed via the `npm` tool of NodeJS. All instructions have been tested under the following configuration:
 
