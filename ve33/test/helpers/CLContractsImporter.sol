@@ -41,7 +41,8 @@ abstract contract CLContractsImporter is Test {
 
     // Administrative Addresses
     address public team = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
-    address public poolFactoryOwner = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
+    address public poolFactoryOwner =
+        0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
     address public feeManager = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
 
     /**
@@ -87,9 +88,18 @@ abstract contract CLContractsImporter is Test {
      */
     function _verifyCLContractsImported() internal view {
         require(clPoolFactory != address(0), "CLPoolFactory not imported");
-        require(clPoolImplementation != address(0), "CLPoolImplementation not imported");
-        require(clNonfungiblePositionManager != address(0), "CLNonfungiblePositionManager not imported");
-        require(clNftPositionDescriptor != address(0), "CLNftPositionDescriptor not imported");
+        require(
+            clPoolImplementation != address(0),
+            "CLPoolImplementation not imported"
+        );
+        require(
+            clNonfungiblePositionManager != address(0),
+            "CLNonfungiblePositionManager not imported"
+        );
+        require(
+            clNftPositionDescriptor != address(0),
+            "CLNftPositionDescriptor not imported"
+        );
         require(clSwapRouter != address(0), "CLSwapRouter not imported");
         require(clQuoter != address(0), "CLQuoter not imported");
     }
@@ -97,64 +107,121 @@ abstract contract CLContractsImporter is Test {
     // ========== Internal Import Functions ==========
 
     function _importPoolFactory(string memory json) private {
-        clPoolFactory = abi.decode(vm.parseJson(json, ".poolFactory_address"), (address));
-        bytes memory bytecode = abi.decode(vm.parseJson(json, ".poolFactory_bytecode"), (bytes));
+        clPoolFactory = abi.decode(
+            vm.parseJson(json, ".poolFactory_address"),
+            (address)
+        );
+        bytes memory bytecode = abi.decode(
+            vm.parseJson(json, ".poolFactory_bytecode"),
+            (bytes)
+        );
         vm.etch(clPoolFactory, bytecode);
         console.log("  PoolFactory imported at:", clPoolFactory);
     }
 
     function _importPoolImplementation(string memory json) private {
-        clPoolImplementation = abi.decode(vm.parseJson(json, ".poolImplementation_address"), (address));
-        bytes memory bytecode = abi.decode(vm.parseJson(json, ".poolImplementation_bytecode"), (bytes));
+        clPoolImplementation = abi.decode(
+            vm.parseJson(json, ".poolImplementation_address"),
+            (address)
+        );
+        bytes memory bytecode = abi.decode(
+            vm.parseJson(json, ".poolImplementation_bytecode"),
+            (bytes)
+        );
         vm.etch(clPoolImplementation, bytecode);
         console.log("  PoolImplementation imported at:", clPoolImplementation);
     }
 
     function _importNonfungiblePositionManager(string memory json) private {
-        clNonfungiblePositionManager = abi.decode(vm.parseJson(json, ".nonfungiblePositionManager_address"), (address));
-        bytes memory bytecode = abi.decode(vm.parseJson(json, ".nonfungiblePositionManager_bytecode"), (bytes));
+        clNonfungiblePositionManager = abi.decode(
+            vm.parseJson(json, ".nonfungiblePositionManager_address"),
+            (address)
+        );
+        bytes memory bytecode = abi.decode(
+            vm.parseJson(json, ".nonfungiblePositionManager_bytecode"),
+            (bytes)
+        );
         vm.etch(clNonfungiblePositionManager, bytecode);
-        console.log("  NonfungiblePositionManager imported at:", clNonfungiblePositionManager);
+        console.log(
+            "  NonfungiblePositionManager imported at:",
+            clNonfungiblePositionManager
+        );
     }
 
     function _importNftPositionDescriptor(string memory json) private {
-        clNftPositionDescriptor = abi.decode(vm.parseJson(json, ".nftPositionDescriptor_address"), (address));
-        bytes memory bytecode = abi.decode(vm.parseJson(json, ".nftPositionDescriptor_bytecode"), (bytes));
+        clNftPositionDescriptor = abi.decode(
+            vm.parseJson(json, ".nftPositionDescriptor_address"),
+            (address)
+        );
+        bytes memory bytecode = abi.decode(
+            vm.parseJson(json, ".nftPositionDescriptor_bytecode"),
+            (bytes)
+        );
         vm.etch(clNftPositionDescriptor, bytecode);
-        console.log("  NftPositionDescriptor imported at:", clNftPositionDescriptor);
+        console.log(
+            "  NftPositionDescriptor imported at:",
+            clNftPositionDescriptor
+        );
     }
 
     function _importSwapRouter(string memory json) private {
-        clSwapRouter = abi.decode(vm.parseJson(json, ".swapRouter_address"), (address));
-        bytes memory bytecode = abi.decode(vm.parseJson(json, ".swapRouter_bytecode"), (bytes));
+        clSwapRouter = abi.decode(
+            vm.parseJson(json, ".swapRouter_address"),
+            (address)
+        );
+        bytes memory bytecode = abi.decode(
+            vm.parseJson(json, ".swapRouter_bytecode"),
+            (bytes)
+        );
         vm.etch(clSwapRouter, bytecode);
         console.log("  SwapRouter imported at:", clSwapRouter);
     }
 
     function _importQuoter(string memory json) private {
         clQuoter = abi.decode(vm.parseJson(json, ".quoter_address"), (address));
-        bytes memory bytecode = abi.decode(vm.parseJson(json, ".quoter_bytecode"), (bytes));
+        bytes memory bytecode = abi.decode(
+            vm.parseJson(json, ".quoter_bytecode"),
+            (bytes)
+        );
         vm.etch(clQuoter, bytecode);
         console.log("  Quoter imported at:", clQuoter);
     }
 
     function _importSwapFeeModule(string memory json) private {
-        clSwapFeeModule = abi.decode(vm.parseJson(json, ".swapFeeModule_address"), (address));
-        bytes memory bytecode = abi.decode(vm.parseJson(json, ".swapFeeModule_bytecode"), (bytes));
+        clSwapFeeModule = abi.decode(
+            vm.parseJson(json, ".swapFeeModule_address"),
+            (address)
+        );
+        bytes memory bytecode = abi.decode(
+            vm.parseJson(json, ".swapFeeModule_bytecode"),
+            (bytes)
+        );
         vm.etch(clSwapFeeModule, bytecode);
         console.log("  SwapFeeModule imported at:", clSwapFeeModule);
     }
 
     function _importUnstakedFeeModule(string memory json) private {
-        clUnstakedFeeModule = abi.decode(vm.parseJson(json, ".unstakedFeeModule_address"), (address));
-        bytes memory bytecode = abi.decode(vm.parseJson(json, ".unstakedFeeModule_bytecode"), (bytes));
+        clUnstakedFeeModule = abi.decode(
+            vm.parseJson(json, ".unstakedFeeModule_address"),
+            (address)
+        );
+        bytes memory bytecode = abi.decode(
+            vm.parseJson(json, ".unstakedFeeModule_bytecode"),
+            (bytes)
+        );
         vm.etch(clUnstakedFeeModule, bytecode);
         console.log("  UnstakedFeeModule imported at:", clUnstakedFeeModule);
     }
 
     function _importProtocolFeeModule(string memory json) private {
-        clProtocolFeeModule = abi.decode(vm.parseJson(json, ".protocolFeeModule_address"), (address));
-        bytes memory bytecode = abi.decode(vm.parseJson(json, ".protocolFeeModule_bytecode"), (bytes));
+        clProtocolFeeModule = abi.decode(
+            vm.parseJson(json, ".protocolFeeModule_address"),
+            (address)
+        );
+        bytes memory bytecode = abi.decode(
+            vm.parseJson(json, ".protocolFeeModule_bytecode"),
+            (bytes)
+        );
         vm.etch(clProtocolFeeModule, bytecode);
         console.log("  ProtocolFeeModule imported at:", clProtocolFeeModule);
     }
@@ -175,21 +242,29 @@ abstract contract CLContractsImporter is Test {
         // NonfungiblePositionManager
         // -> sets _nextId, _nextPoolId
         offsetSlot = bytes32(uint256(uint176(1) | (uint80(1) << 176)));
-        vm.store(clNonfungiblePositionManager, bytes32(uint256(14)), offsetSlot);
+        vm.store(
+            clNonfungiblePositionManager,
+            bytes32(uint256(14)),
+            offsetSlot
+        );
     }
 
     // As the bytecode was copied, any setup is meant to be performed once again
     function _configureCLContracts() private {
         address authorizedCaller = IPoolFactory(clPoolFactory).swapFeeManager();
         vm.prank(authorizedCaller);
-        IPoolFactory(clPoolFactory).setSwapFeeModule({_swapFeeModule: clSwapFeeModule});
+        IPoolFactory(clPoolFactory).setSwapFeeModule({
+            _swapFeeModule: clSwapFeeModule
+        });
         vm.prank(authorizedCaller);
         IPoolFactory(clPoolFactory).setSwapFeeManager(feeManager);
 
         // Update unstaked fee manager
         authorizedCaller = IPoolFactory(clPoolFactory).unstakedFeeManager();
         vm.prank(authorizedCaller);
-        IPoolFactory(clPoolFactory).setUnstakedFeeModule({_unstakedFeeModule: clUnstakedFeeModule});
+        IPoolFactory(clPoolFactory).setUnstakedFeeModule({
+            _unstakedFeeModule: clUnstakedFeeModule
+        });
         vm.prank(authorizedCaller);
         IPoolFactory(clPoolFactory).setDefaultUnstakedFee(100_000);
         vm.prank(authorizedCaller);
@@ -198,7 +273,9 @@ abstract contract CLContractsImporter is Test {
         // Update protocol fee manager
         authorizedCaller = IPoolFactory(clPoolFactory).protocolFeeManager();
         vm.prank(authorizedCaller);
-        IPoolFactory(clPoolFactory).setProtocolFeeModule({_protocolFeeModule: clProtocolFeeModule});
+        IPoolFactory(clPoolFactory).setProtocolFeeModule({
+            _protocolFeeModule: clProtocolFeeModule
+        });
         vm.prank(authorizedCaller);
         IPoolFactory(clPoolFactory).setProtocolFeeManager(feeManager);
 
@@ -224,7 +301,9 @@ abstract contract CLContractsImporter is Test {
 
         // Configure DynamicSwapFeeModule
         authorizedCaller = feeManager;
-        IDynamicSwapFeeModule feeModule = IDynamicSwapFeeModule(clSwapFeeModule);
+        IDynamicSwapFeeModule feeModule = IDynamicSwapFeeModule(
+            clSwapFeeModule
+        );
         vm.prank(authorizedCaller);
         feeModule.setDefaultScalingFactor(10000);
         vm.prank(authorizedCaller);
@@ -233,7 +312,9 @@ abstract contract CLContractsImporter is Test {
         feeModule.setSecondsAgo(600);
 
         // Configure NonfungiblePositionManager
-        INonfungiblePositionManager nftPositionManager = INonfungiblePositionManager(clNonfungiblePositionManager);
+        INonfungiblePositionManager nftPositionManager = INonfungiblePositionManager(
+                clNonfungiblePositionManager
+            );
         authorizedCaller = nftPositionManager.owner();
         vm.prank(authorizedCaller);
         nftPositionManager.setTokenDescriptor(clNftPositionDescriptor);
@@ -243,14 +324,18 @@ abstract contract CLContractsImporter is Test {
 
     // ========== Helper Functions ==========
 
-    function _getCLExportPath(string memory network) private view returns (string memory) {
+    function _getCLExportPath(
+        string memory network
+    ) private view returns (string memory) {
         string memory root = vm.projectRoot();
-        return string(abi.encodePacked(
-            root,
-            "/../cl/deployments/cl-exports-",
-            network,
-            ".json"
-        ));
+        return
+            string(
+                abi.encodePacked(
+                    root,
+                    "/../cl/deployments/cl-exports-",
+                    network,
+                    ".json"
+                )
+            );
     }
-    
 }

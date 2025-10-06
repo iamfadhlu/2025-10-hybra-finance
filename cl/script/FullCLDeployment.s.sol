@@ -42,7 +42,7 @@ contract FullCLDeployment is Script {
     address public DAI;
     address public WETH;
 
-    // Deployment addresses 
+    // Deployment addresses
     address public poolFactory;
     address public poolImplementation;
     address public nonfungiblePositionManager;
@@ -60,10 +60,10 @@ contract FullCLDeployment is Script {
         deployer = msg.sender;
 
         // Deploy USDC, USDT, DAI, and WETH
-        USDC = address(new MockERC20("USDC","USDC", 6));
-        USDT = address(new MockERC20("USDT","USDT", 6));
-        DAI = address(new MockERC20("DAI","DAI", 18));
-        WETH = address(new MockNative("WETH","WETH"));
+        USDC = address(new MockERC20("USDC", "USDC", 6));
+        USDT = address(new MockERC20("USDT", "USDT", 6));
+        DAI = address(new MockERC20("DAI", "DAI", 18));
+        WETH = address(new MockNative("WETH", "WETH"));
 
         // Deploy Pool Factory & Pool Implementation
         (poolFactory, poolImplementation) = _deployCLCore();
@@ -82,7 +82,10 @@ contract FullCLDeployment is Script {
         console2.log("Summary:");
         console2.log("- PoolFactory:", poolFactory);
         console2.log("- PoolImplementation:", poolImplementation);
-        console2.log("- NonfungiblePositionManager:", nonfungiblePositionManager);
+        console2.log(
+            "- NonfungiblePositionManager:",
+            nonfungiblePositionManager
+        );
         console2.log("- SwapRouter:", swapRouter);
         console2.log("- Quoter:", quoter);
         console2.log("");
@@ -90,21 +93,35 @@ contract FullCLDeployment is Script {
 
     function _deployCLCore() internal returns (address, address) {
         address poolImplementation_ = address(new CLPool());
-        return (address(new CLFactory({_poolImplementation: address(poolImplementation_)})), poolImplementation_);
+        return (
+            address(
+                new CLFactory({
+                    _poolImplementation: address(poolImplementation_)
+                })
+            ),
+            poolImplementation_
+        );
     }
 
     function _deployCLNFT() internal returns (address, address) {
-        address nftDescriptor = address(new NonfungibleTokenPositionDescriptor({
-            _WETH9: WETH, 
-            _nativeCurrencyLabelBytes: bytes32("ETH")
-        }));
-        return (nftDescriptor, address(new NonfungiblePositionManager({
-            _factory: poolFactory,
-            _WETH9: WETH,
-            _tokenDescriptor: nftDescriptor,
-            name: "Concentrated Liquidity Positions NFT",
-            symbol: "CL-POS"
-        })));
+        address nftDescriptor = address(
+            new NonfungibleTokenPositionDescriptor({
+                _WETH9: WETH,
+                _nativeCurrencyLabelBytes: bytes32("ETH")
+            })
+        );
+        return (
+            nftDescriptor,
+            address(
+                new NonfungiblePositionManager({
+                    _factory: poolFactory,
+                    _WETH9: WETH,
+                    _tokenDescriptor: nftDescriptor,
+                    name: "Concentrated Liquidity Positions NFT",
+                    symbol: "CL-POS"
+                })
+            )
+        );
     }
 
     function _deployCLFees() internal returns (address, address, address) {
@@ -112,16 +129,25 @@ contract FullCLDeployment is Script {
         address[] memory initialPools = new address[](0);
         uint24[] memory initialFees = new uint24[](0);
 
-        return (address(new DynamicSwapFeeModule({
-            _factory: poolFactory,
-            _defaultScalingFactor: 10000,  // 1 basis point per tick deviation
-            _defaultFeeCap: 10000,          // 1% max total fee
-            _pools: initialPools,
-            _fees: initialFees
-        })), address(new CustomUnstakedFeeModule({_factory: poolFactory})), address(new CustomProtocolFeeModule({_factory: poolFactory})));
+        return (
+            address(
+                new DynamicSwapFeeModule({
+                    _factory: poolFactory,
+                    _defaultScalingFactor: 10000, // 1 basis point per tick deviation
+                    _defaultFeeCap: 10000, // 1% max total fee
+                    _pools: initialPools,
+                    _fees: initialFees
+                })
+            ),
+            address(new CustomUnstakedFeeModule({_factory: poolFactory})),
+            address(new CustomProtocolFeeModule({_factory: poolFactory}))
+        );
     }
 
     function _deployCLPeriphery() internal returns (address, address) {
-        return (address(new QuoterV2({_factory: poolFactory, _WETH9: WETH})), address(new SwapRouter({_factory: poolFactory, _WETH9: WETH})));
+        return (
+            address(new QuoterV2({_factory: poolFactory, _WETH9: WETH})),
+            address(new SwapRouter({_factory: poolFactory, _WETH9: WETH}))
+        );
     }
 }

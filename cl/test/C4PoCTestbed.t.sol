@@ -47,7 +47,7 @@ contract C4PoCTestbed is Test {
     address public DAI;
     address public WETH;
 
-    // Deployment addresses 
+    // Deployment addresses
     CLFactory public poolFactory;
     CLPool public poolImplementation;
     NonfungiblePositionManager public nonfungiblePositionManager;
@@ -70,10 +70,10 @@ contract C4PoCTestbed is Test {
         deployer = msg.sender;
 
         // Deploy USDC, USDT, DAI, and WETH
-        USDC = address(new MockERC20("USDC","USDC", 6));
-        USDT = address(new MockERC20("USDT","USDT", 6));
-        DAI = address(new MockERC20("DAI","DAI", 18));
-        WETH = address(new MockNative("WETH","WETH"));
+        USDC = address(new MockERC20("USDC", "USDC", 6));
+        USDT = address(new MockERC20("USDT", "USDT", 6));
+        DAI = address(new MockERC20("DAI", "DAI", 18));
+        WETH = address(new MockNative("WETH", "WETH"));
 
         // Deploy Pool Factory & Pool Implementation
         (poolFactory, poolImplementation) = _deployCLCore();
@@ -100,39 +100,68 @@ contract C4PoCTestbed is Test {
 
     function _deployCLCore() internal returns (CLFactory, CLPool) {
         CLPool poolImplementation_ = new CLPool();
-        return (new CLFactory({_poolImplementation: address(poolImplementation_)}), poolImplementation_);
+        return (
+            new CLFactory({_poolImplementation: address(poolImplementation_)}),
+            poolImplementation_
+        );
     }
 
-    function _deployCLNFT() internal returns (NonfungibleTokenPositionDescriptor, NonfungiblePositionManager) {
+    function _deployCLNFT()
+        internal
+        returns (NonfungibleTokenPositionDescriptor, NonfungiblePositionManager)
+    {
         NonfungibleTokenPositionDescriptor nftPositionDescriptor_ = new NonfungibleTokenPositionDescriptor({
-            _WETH9: address(WETH), 
-            _nativeCurrencyLabelBytes: bytes32("ETH")
-        });
-        return (nftPositionDescriptor_, new NonfungiblePositionManager({
-            _factory: address(poolFactory),
-            _WETH9: address(WETH),
-            _tokenDescriptor: address(nftPositionDescriptor_),
-            name: "Concentrated Liquidity Positions NFT",
-            symbol: "CL-POS"
-        }));
+                _WETH9: address(WETH),
+                _nativeCurrencyLabelBytes: bytes32("ETH")
+            });
+        return (
+            nftPositionDescriptor_,
+            new NonfungiblePositionManager({
+                _factory: address(poolFactory),
+                _WETH9: address(WETH),
+                _tokenDescriptor: address(nftPositionDescriptor_),
+                name: "Concentrated Liquidity Positions NFT",
+                symbol: "CL-POS"
+            })
+        );
     }
 
-    function _deployCLFees() internal returns (DynamicSwapFeeModule, CustomUnstakedFeeModule, CustomProtocolFeeModule) {
+    function _deployCLFees()
+        internal
+        returns (
+            DynamicSwapFeeModule,
+            CustomUnstakedFeeModule,
+            CustomProtocolFeeModule
+        )
+    {
         // Prepare initial fee configuration
         address[] memory initialPools = new address[](0);
         uint24[] memory initialFees = new uint24[](0);
 
-        return (new DynamicSwapFeeModule({
-            _factory: address(poolFactory),
-            _defaultScalingFactor: 10000,  // 1 basis point per tick deviation
-            _defaultFeeCap: 10000,          // 1% max total fee
-            _pools: initialPools,
-            _fees: initialFees
-        }), new CustomUnstakedFeeModule({_factory: address(poolFactory)}), new CustomProtocolFeeModule({_factory: address(poolFactory)}));
+        return (
+            new DynamicSwapFeeModule({
+                _factory: address(poolFactory),
+                _defaultScalingFactor: 10000, // 1 basis point per tick deviation
+                _defaultFeeCap: 10000, // 1% max total fee
+                _pools: initialPools,
+                _fees: initialFees
+            }),
+            new CustomUnstakedFeeModule({_factory: address(poolFactory)}),
+            new CustomProtocolFeeModule({_factory: address(poolFactory)})
+        );
     }
 
     function _deployCLPeriphery() internal returns (QuoterV2, SwapRouter) {
-        return (new QuoterV2({_factory: address(poolFactory), _WETH9: address(WETH)}), new SwapRouter({_factory: address(poolFactory), _WETH9: address(WETH)}));
+        return (
+            new QuoterV2({
+                _factory: address(poolFactory),
+                _WETH9: address(WETH)
+            }),
+            new SwapRouter({
+                _factory: address(poolFactory),
+                _WETH9: address(WETH)
+            })
+        );
     }
 
     function _configureContracts() internal {
@@ -140,10 +169,14 @@ contract C4PoCTestbed is Test {
         poolFactory.setSwapFeeModule({_swapFeeModule: address(swapFeeModule)});
 
         // Transaction 2: Set unstaked fee module
-        poolFactory.setUnstakedFeeModule({_unstakedFeeModule: address(unstakedFeeModule)});
+        poolFactory.setUnstakedFeeModule({
+            _unstakedFeeModule: address(unstakedFeeModule)
+        });
 
         // Transaction 3: Set protocol fee module
-        poolFactory.setProtocolFeeModule({_protocolFeeModule: address(protocolFeeModule)});
+        poolFactory.setProtocolFeeModule({
+            _protocolFeeModule: address(protocolFeeModule)
+        });
 
         // Transaction 4: Set NFT owner
         nonfungiblePositionManager.setOwner(team);
@@ -166,17 +199,38 @@ contract C4PoCTestbed is Test {
      */
     function testDeploymentSuccess() public view {
         // Core Contracts
-        require(address(poolImplementation) != address(0), "Pool Implementation not deployed");
-        require(address(poolFactory) != address(0), "Pool Factory not deployed");
+        require(
+            address(poolImplementation) != address(0),
+            "Pool Implementation not deployed"
+        );
+        require(
+            address(poolFactory) != address(0),
+            "Pool Factory not deployed"
+        );
 
         // Fee Modules
-        require(address(swapFeeModule) != address(0), "Swap Fee Module not deployed");
-        require(address(unstakedFeeModule) != address(0), "Unstaked Fee Module not deployed");
-        require(address(protocolFeeModule) != address(0), "Protocol Fee Module not deployed");
+        require(
+            address(swapFeeModule) != address(0),
+            "Swap Fee Module not deployed"
+        );
+        require(
+            address(unstakedFeeModule) != address(0),
+            "Unstaked Fee Module not deployed"
+        );
+        require(
+            address(protocolFeeModule) != address(0),
+            "Protocol Fee Module not deployed"
+        );
 
         // Periphery Contracts
-        require(address(nftPositionDescriptor) != address(0), "NFT Descriptor not deployed");
-        require(address(nonfungiblePositionManager) != address(0), "NFT Position Manager not deployed");
+        require(
+            address(nftPositionDescriptor) != address(0),
+            "NFT Descriptor not deployed"
+        );
+        require(
+            address(nonfungiblePositionManager) != address(0),
+            "NFT Position Manager not deployed"
+        );
         require(address(quoter) != address(0), "Quoter not deployed");
         require(address(swapRouter) != address(0), "Swap Router not deployed");
     }
@@ -186,33 +240,65 @@ contract C4PoCTestbed is Test {
      */
     function testFactoryConfiguration() public view {
         // Check owner
-        require(poolFactory.owner() == poolFactoryOwner, "Factory owner incorrect");
+        require(
+            poolFactory.owner() == poolFactoryOwner,
+            "Factory owner incorrect"
+        );
 
         // Check fee modules are set
-        require(poolFactory.swapFeeModule() == address(swapFeeModule), "Swap fee module not set");
-        require(poolFactory.unstakedFeeModule() == address(unstakedFeeModule), "Unstaked fee module not set");
-        require(poolFactory.protocolFeeModule() == address(protocolFeeModule), "Protocol fee module not set");
+        require(
+            poolFactory.swapFeeModule() == address(swapFeeModule),
+            "Swap fee module not set"
+        );
+        require(
+            poolFactory.unstakedFeeModule() == address(unstakedFeeModule),
+            "Unstaked fee module not set"
+        );
+        require(
+            poolFactory.protocolFeeModule() == address(protocolFeeModule),
+            "Protocol fee module not set"
+        );
 
         // Check fee managers
-        require(poolFactory.swapFeeManager() == feeManager, "Swap fee manager not set");
-        require(poolFactory.unstakedFeeManager() == feeManager, "Unstaked fee manager not set");
-        require(poolFactory.protocolFeeManager() == feeManager, "Protocol fee manager not set");
+        require(
+            poolFactory.swapFeeManager() == feeManager,
+            "Swap fee manager not set"
+        );
+        require(
+            poolFactory.unstakedFeeManager() == feeManager,
+            "Unstaked fee manager not set"
+        );
+        require(
+            poolFactory.protocolFeeManager() == feeManager,
+            "Protocol fee manager not set"
+        );
     }
 
     /**
      * @notice Test that NFT configuration is correct
      */
     function testNFTConfiguration() public view {
-        require(nonfungiblePositionManager.owner() == team, "NFT owner incorrect");
-        require(nonfungiblePositionManager.factory() == address(poolFactory), "NFT factory incorrect");
-        require(nonfungiblePositionManager.WETH9() == address(WETH), "NFT WETH incorrect");
+        require(
+            nonfungiblePositionManager.owner() == team,
+            "NFT owner incorrect"
+        );
+        require(
+            nonfungiblePositionManager.factory() == address(poolFactory),
+            "NFT factory incorrect"
+        );
+        require(
+            nonfungiblePositionManager.WETH9() == address(WETH),
+            "NFT WETH incorrect"
+        );
     }
 
     /**
      * @notice Print all deployed contract addresses
      */
     function testPrintAllAddresses() public view {
-        console2.log("\n========== ALL DEPLOYED CONTRACT ADDRESSES ==========\n");
+        console2.log(
+            "\n========== ALL DEPLOYED CONTRACT ADDRESSES ==========\n"
+        );
 
         console2.log("Core Contracts:");
         console2.log("  Pool Implementation:", address(poolImplementation));
@@ -227,7 +313,10 @@ contract C4PoCTestbed is Test {
 
         console2.log("Periphery Contracts:");
         console2.log("  NFT Descriptor:", address(nftPositionDescriptor));
-        console2.log("  NFT Position Manager:", address(nonfungiblePositionManager));
+        console2.log(
+            "  NFT Position Manager:",
+            address(nonfungiblePositionManager)
+        );
         console2.log("  Quoter V2:", address(quoter));
         console2.log("  Swap Router:", address(swapRouter));
         console2.log("");

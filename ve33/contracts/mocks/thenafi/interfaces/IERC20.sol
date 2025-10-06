@@ -7,8 +7,15 @@ interface IERC20 {
     function decimals() external view returns (uint8);
     function symbol() external view returns (string memory);
     function balanceOf(address) external view returns (uint);
-    function transferFrom(address sender, address recipient, uint amount) external returns (bool);
-    function allowance(address owner, address spender) external view returns (uint);
+    function transferFrom(
+        address sender,
+        address recipient,
+        uint amount
+    ) external returns (bool);
+    function allowance(
+        address owner,
+        address spender
+    ) external view returns (uint);
     function approve(address spender, uint value) external returns (bool);
 
     event Transfer(address indexed from, address indexed to, uint value);

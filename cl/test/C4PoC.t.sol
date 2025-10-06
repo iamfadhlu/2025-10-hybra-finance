@@ -12,7 +12,7 @@ import {C4PoCTestbed} from "./C4PoCTestbed.t.sol";
  * @dev All available variables are showcased in the commented
  *      storage slots of the contract.
  */
- 
+
 // Deployer
 // address public deployer;
 
@@ -22,7 +22,7 @@ import {C4PoCTestbed} from "./C4PoCTestbed.t.sol";
 // address public DAI;
 // address public WETH;
 
-// Deployment addresses 
+// Deployment addresses
 // CLFactory public poolFactory;
 // CLPool public poolImplementation;
 // NonfungiblePositionManager public nonfungiblePositionManager;
@@ -45,7 +45,5 @@ contract C4PoC is C4PoCTestbed {
         super.setUp();
     }
 
-    function test_submissionValidity() external {
-
-    }
+    function test_submissionValidity() external {}
 }

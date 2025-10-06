@@ -103,10 +103,10 @@ contract C4PoCTestbed is Test, CLContractsImporter {
         // 3. Deploy VeArtProxy
         VeArtProxyUpgradeable veArtProxyImpl = new VeArtProxyUpgradeable();
         TransparentUpgradeableProxy veArtProxyProxy = new TransparentUpgradeableProxy(
-            address(veArtProxyImpl),
-            address(proxyAdmin),
-            ""
-        );
+                address(veArtProxyImpl),
+                address(proxyAdmin),
+                ""
+            );
         veArtProxy = VeArtProxyUpgradeable(address(veArtProxyProxy));
         veArtProxy.initialize();
         console.log("VeArtProxy:", address(veArtProxy));
@@ -129,10 +129,7 @@ contract C4PoCTestbed is Test, CLContractsImporter {
         console.log("HYBR:", address(hybr));
 
         // 2. Deploy VotingEscrow
-        votingEscrow = new VotingEscrow(
-            address(hybr),
-            address(veArtProxy)
-        );
+        votingEscrow = new VotingEscrow(address(hybr), address(veArtProxy));
         console.log("VotingEscrow:", address(votingEscrow));
 
         // 3. Deploy RewardHYBR Token
@@ -140,10 +137,7 @@ contract C4PoCTestbed is Test, CLContractsImporter {
         console.log("RewardHYBR:", address(rewardHybr));
 
         // 4. Deploy GovernanceHYBR Token
-        gHybr = new GrowthHYBR(
-            address(hybr),
-            address(votingEscrow)
-        );
+        gHybr = new GrowthHYBR(address(hybr), address(votingEscrow));
         console.log("GrowthHYBR:", address(gHybr));
 
         console.log("\n=== Token System Deployment Complete ===");
@@ -160,13 +154,13 @@ contract C4PoCTestbed is Test, CLContractsImporter {
         console.log("Deploying GaugeFactory...");
         GaugeFactory gaugeFactoryImpl = new GaugeFactory();
         TransparentUpgradeableProxy gaugeFactoryProxy = new TransparentUpgradeableProxy(
-            address(gaugeFactoryImpl),
-            address(proxyAdmin),
-            abi.encodeWithSelector(
-                GaugeFactory.initialize.selector,
-                address(permissionsRegistry)
-            )
-        );
+                address(gaugeFactoryImpl),
+                address(proxyAdmin),
+                abi.encodeWithSelector(
+                    GaugeFactory.initialize.selector,
+                    address(permissionsRegistry)
+                )
+            );
         gaugeFactory = GaugeFactory(address(gaugeFactoryProxy));
         console.log("GaugeFactory:", address(gaugeFactory));
 
@@ -176,13 +170,13 @@ contract C4PoCTestbed is Test, CLContractsImporter {
         console.log("Deploying GaugeFactoryCL...");
         GaugeFactoryCL gaugeFactoryCLImpl = new GaugeFactoryCL();
         TransparentUpgradeableProxy gaugeFactoryCLProxy = new TransparentUpgradeableProxy(
-            address(gaugeFactoryCLImpl),
-            address(proxyAdmin),
-            abi.encodeWithSelector(
-                GaugeFactoryCL.initialize.selector,
-                address(permissionsRegistry)
-            )
-        );
+                address(gaugeFactoryCLImpl),
+                address(proxyAdmin),
+                abi.encodeWithSelector(
+                    GaugeFactoryCL.initialize.selector,
+                    address(permissionsRegistry)
+                )
+            );
         gaugeFactoryCL = GaugeFactoryCL(address(gaugeFactoryCLProxy));
         console.log("GaugeFactoryCL:", address(gaugeFactoryCL));
 
@@ -201,10 +195,10 @@ contract C4PoCTestbed is Test, CLContractsImporter {
         console.log("Deploying GaugeManager...");
         GaugeManager gaugeManagerImpl = new GaugeManager();
         TransparentUpgradeableProxy gaugeManagerProxy = new TransparentUpgradeableProxy(
-            address(gaugeManagerImpl),
-            address(proxyAdmin),
-            ""
-        );
+                address(gaugeManagerImpl),
+                address(proxyAdmin),
+                ""
+            );
         gaugeManager = GaugeManager(address(gaugeManagerProxy));
         console.log("GaugeManager:", address(gaugeManager));
 
@@ -213,24 +207,24 @@ contract C4PoCTestbed is Test, CLContractsImporter {
         // Initialize GaugeManager
         console.log("Initializing GaugeManager...");
         gaugeManager.initialize(
-            address(votingEscrow),              // __ve
-            address(tokenHandler),              // _tokenHandler
-            address(gaugeFactory),              // _gaugeFactory
-            address(gaugeFactoryCL),            // _gaugeFactoryCL
-            address(thenaFiFactory),            // _pairFactory
-            clPoolFactory,                      // _pairFactoryCL (CL factory)
-            address(permissionsRegistry),       // _permissionRegistory
-            clNonfungiblePositionManager        // _nfpm (CL NFT manager)
+            address(votingEscrow), // __ve
+            address(tokenHandler), // _tokenHandler
+            address(gaugeFactory), // _gaugeFactory
+            address(gaugeFactoryCL), // _gaugeFactoryCL
+            address(thenaFiFactory), // _pairFactory
+            clPoolFactory, // _pairFactoryCL (CL factory)
+            address(permissionsRegistry), // _permissionRegistory
+            clNonfungiblePositionManager // _nfpm (CL NFT manager)
         );
 
         // 2. Deploy BribeFactoryV3
         console.log("Deploying BribeFactoryV3...");
         BribeFactoryV3 bribeFactoryV3Impl = new BribeFactoryV3();
         TransparentUpgradeableProxy bribeFactoryV3Proxy = new TransparentUpgradeableProxy(
-            address(bribeFactoryV3Impl),
-            address(proxyAdmin),
-            ""
-        );
+                address(bribeFactoryV3Impl),
+                address(proxyAdmin),
+                ""
+            );
         bribeFactoryV3 = BribeFactoryV3(address(bribeFactoryV3Proxy));
         console.log("BribeFactoryV3:", address(bribeFactoryV3));
     }
@@ -270,16 +264,19 @@ contract C4PoCTestbed is Test, CLContractsImporter {
         // 1. Deploy RewardsDistributor
         console.log("Deploying RewardsDistributor...");
         rewardsDistributor = new RewardsDistributor(address(votingEscrow));
-        console.log("RewardsDistributor deployed at:", address(rewardsDistributor));
+        console.log(
+            "RewardsDistributor deployed at:",
+            address(rewardsDistributor)
+        );
 
         // 2. Deploy Minter
         console.log("Deploying Minter...");
         MinterUpgradeable minterImpl = new MinterUpgradeable();
         TransparentUpgradeableProxy minterProxy = new TransparentUpgradeableProxy(
-            address(minterImpl),
-            address(proxyAdmin),
-            ""
-        );
+                address(minterImpl),
+                address(proxyAdmin),
+                ""
+            );
         minter = MinterUpgradeable(address(minterProxy));
         console.log("Minter deployed at:", address(minter));
 
@@ -341,16 +338,16 @@ contract C4PoCTestbed is Test, CLContractsImporter {
         console.log("Deploying VoterV3...");
         VoterV3 voterImpl = new VoterV3();
         TransparentUpgradeableProxy voterProxy = new TransparentUpgradeableProxy(
-            address(voterImpl),
-            address(proxyAdmin),
-            abi.encodeWithSelector(
-                VoterV3.initialize.selector,
-                address(votingEscrow),          // __ve
-                address(tokenHandler),          // _tokenHandler
-                address(gaugeManager),          // _gaugeManager
-                address(permissionsRegistry)    // _permissionRegistry
-            )
-        );
+                address(voterImpl),
+                address(proxyAdmin),
+                abi.encodeWithSelector(
+                    VoterV3.initialize.selector,
+                    address(votingEscrow), // __ve
+                    address(tokenHandler), // _tokenHandler
+                    address(gaugeManager), // _gaugeManager
+                    address(permissionsRegistry) // _permissionRegistry
+                )
+            );
         voter = VoterV3(address(voterProxy));
         console.log("VoterV3:", address(voter));
 
@@ -366,7 +363,9 @@ contract C4PoCTestbed is Test, CLContractsImporter {
 
         console.log("");
         console.log("=== Voting System Deployment and Setup Complete ===");
-        console.log("Voter has been configured in both GaugeManager and VotingEscrow");
+        console.log(
+            "Voter has been configured in both GaugeManager and VotingEscrow"
+        );
     }
 
     // ========== Set3-InitMinter.s.sol ==========
@@ -385,7 +384,9 @@ contract C4PoCTestbed is Test, CLContractsImporter {
             console.log("Performing initial mint first...");
             hybr.initialMint(deployer);
             hybr.setMinter(address(minter));
-            console.log("Initial mint completed - 500M HYBR minted to deployer");
+            console.log(
+                "Initial mint completed - 500M HYBR minted to deployer"
+            );
         }
 
         // Initialize the minter with initial distribution

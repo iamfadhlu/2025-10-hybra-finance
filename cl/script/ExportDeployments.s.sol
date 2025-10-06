@@ -25,12 +25,18 @@ contract ExportDeployments is Script, FullCLDeployment {
         bytes memory poolFactoryCode = getDeployedBytecode(poolFactory);
         bytes memory poolImplCode = getDeployedBytecode(poolImplementation);
         bytes memory npmCode = getDeployedBytecode(nonfungiblePositionManager);
-        bytes memory descriptorCode = getDeployedBytecode(nftPositionDescriptor);
+        bytes memory descriptorCode = getDeployedBytecode(
+            nftPositionDescriptor
+        );
         bytes memory routerCode = getDeployedBytecode(swapRouter);
         bytes memory quoterCode = getDeployedBytecode(quoter);
         bytes memory swapFeeModuleCode = getDeployedBytecode(swapFeeModule);
-        bytes memory unstakedFeeModuleCode = getDeployedBytecode(unstakedFeeModule);
-        bytes memory protocolFeeModuleCode = getDeployedBytecode(protocolFeeModule);
+        bytes memory unstakedFeeModuleCode = getDeployedBytecode(
+            unstakedFeeModule
+        );
+        bytes memory protocolFeeModuleCode = getDeployedBytecode(
+            protocolFeeModule
+        );
 
         // Build export JSON
         string memory json = buildExportJson(
@@ -59,11 +65,18 @@ contract ExportDeployments is Script, FullCLDeployment {
         console2.log("SwapRouter:", swapRouter);
         console2.log("Quoter:", quoter);
         console2.log("");
-        console2.log("Next step: Use this file in ve33 test setup with vm.etch()");
+        console2.log(
+            "Next step: Use this file in ve33 test setup with vm.etch()"
+        );
     }
 
-    function getDeployedBytecode(address contractAddr) internal view returns (bytes memory) {
-        require(contractAddr != address(0), "Cannot fetch bytecode from zero address");
+    function getDeployedBytecode(
+        address contractAddr
+    ) internal view returns (bytes memory) {
+        require(
+            contractAddr != address(0),
+            "Cannot fetch bytecode from zero address"
+        );
 
         // Solidity 0.7.6 compatible way to get bytecode
         uint256 size;
@@ -115,16 +128,32 @@ contract ExportDeployments is Script, FullCLDeployment {
         vm.serializeBytes(obj, "poolFactory_bytecode", poolFactoryCode);
 
         // PoolImplementation
-        vm.serializeAddress(obj, "poolImplementation_address", poolImplementation);
+        vm.serializeAddress(
+            obj,
+            "poolImplementation_address",
+            poolImplementation
+        );
         vm.serializeBytes(obj, "poolImplementation_bytecode", poolImplCode);
 
         // NonfungiblePositionManager
-        vm.serializeAddress(obj, "nonfungiblePositionManager_address", nonfungiblePositionManager);
+        vm.serializeAddress(
+            obj,
+            "nonfungiblePositionManager_address",
+            nonfungiblePositionManager
+        );
         vm.serializeBytes(obj, "nonfungiblePositionManager_bytecode", npmCode);
 
         // NftPositionDescriptor
-        vm.serializeAddress(obj, "nftPositionDescriptor_address", nftPositionDescriptor);
-        vm.serializeBytes(obj, "nftPositionDescriptor_bytecode", descriptorCode);
+        vm.serializeAddress(
+            obj,
+            "nftPositionDescriptor_address",
+            nftPositionDescriptor
+        );
+        vm.serializeBytes(
+            obj,
+            "nftPositionDescriptor_bytecode",
+            descriptorCode
+        );
 
         // SwapRouter
         vm.serializeAddress(obj, "swapRouter_address", swapRouter);
@@ -139,21 +168,37 @@ contract ExportDeployments is Script, FullCLDeployment {
         vm.serializeBytes(obj, "swapFeeModule_bytecode", swapFeeModuleCode);
 
         // UnstakedFeeModule
-        vm.serializeAddress(obj, "unstakedFeeModule_address", unstakedFeeModule);
-        vm.serializeBytes(obj, "unstakedFeeModule_bytecode", unstakedFeeModuleCode);
-        
+        vm.serializeAddress(
+            obj,
+            "unstakedFeeModule_address",
+            unstakedFeeModule
+        );
+        vm.serializeBytes(
+            obj,
+            "unstakedFeeModule_bytecode",
+            unstakedFeeModuleCode
+        );
+
         // ProtocolFeeModule
-        vm.serializeAddress(obj, "protocolFeeModule_address", protocolFeeModule);
-        string memory finalJson = vm.serializeBytes(obj, "protocolFeeModule_bytecode", protocolFeeModuleCode);
+        vm.serializeAddress(
+            obj,
+            "protocolFeeModule_address",
+            protocolFeeModule
+        );
+        string memory finalJson = vm.serializeBytes(
+            obj,
+            "protocolFeeModule_bytecode",
+            protocolFeeModuleCode
+        );
 
         return finalJson;
     }
 
     function getExportPath() internal view returns (string memory) {
         string memory root = vm.projectRoot();
-        return string(abi.encodePacked(
-            root,
-            "/deployments/cl-exports-local.json"
-        ));
+        return
+            string(
+                abi.encodePacked(root, "/deployments/cl-exports-local.json")
+            );
     }
 }

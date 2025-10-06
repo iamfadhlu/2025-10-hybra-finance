@@ -37,7 +37,7 @@ import {C4PoCTestbed} from "./C4PoCTestbed.t.sol";
 // VoterV3 public voter;
 
 // address public deployer;
- 
+
 // Imported contracts
 // address public clPoolFactory;
 // address public clPoolImplementation;
@@ -59,7 +59,5 @@ contract C4PoC is C4PoCTestbed {
         super.setUp();
     }
 
-    function test_submissionValidity() external {
-
-    }
+    function test_submissionValidity() external {}
 }
