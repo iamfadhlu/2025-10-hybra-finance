@@ -12,16 +12,16 @@
 
 **❗ Important notes for wardens**
 
-1. A coded, runnable PoC is required for all High/Medium submissions to this audit.
+1. This audit includes **deployed code,** and [the "live criticals" exception](https://docs.code4rena.com/awarding#the-live-criticals-exception) therefore applies. 
+2. A coded, runnable PoC is required for all High/Medium submissions to this audit.
    - This repo includes a basic template to run the test suite.
    - PoCs must use the test suite provided in this repo.
    - Your submission will be marked as Insufficient if the POC is not runnable and working with the provided test suite.
    - Exception: PoC is optional (though recommended) for wardens with signal ≥ 0.68.
-2. Judging phase risk adjustments (upgrades/downgrades):
+3. Judging phase risk adjustments (upgrades/downgrades):
    - High- or Medium-risk submissions downgraded by the judge to Low-risk (QA) will be ineligible for awards.
    - Upgrading a Low-risk finding from a QA report to a Medium- or High-risk finding is not supported.
    - As such, wardens are encouraged to select the appropriate risk level carefully during the submission phase.
-3. This audit includes **deployed code,** and [the "live criticals" exception](https://docs.code4rena.com/awarding#the-live-criticals-exception) therefore applies. 
 
 ## Automated Findings / Publicly Known Issues
 
