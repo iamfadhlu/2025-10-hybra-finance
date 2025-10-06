@@ -24,6 +24,8 @@
 
 ## Automated Findings / Publicly Known Issues
 
+Automated findings will be added to this repository **within 24-48 hours** from the contest's launch, and will be considered out-of-scope for the purposes of the contest.
+
 _Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
 
 The issues identified in [Peckshield's September 2025 audit report](https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hybra-ve33-v1.0.pdf) are considered publicly known issues and are therefore ineligible for awards, including:
