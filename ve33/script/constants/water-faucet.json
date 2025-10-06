@@ -1,0 +1,19 @@
+{
+  "tokens": [
+    {
+      "name": "DAI",
+      "claimAmount": 100000000000000000000,
+      "depositAmount": 100000000000000000000000
+    },
+    {
+      "name": "USDC",
+      "claimAmount": 5000000,
+      "depositAmount": 50000000000
+    },
+    {
+      "name": "USDT",
+      "claimAmount": 5000000,
+      "depositAmount": 50000000000
+    }
+  ]
+}
